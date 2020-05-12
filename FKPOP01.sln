@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FKPOP01", "FKPOP01\FKPOP01.csproj", "{5C81D38A-7C5B-4885-BB19-61A9D622A9A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		IMS|Any CPU = IMS|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C81D38A-7C5B-4885-BB19-61A9D622A9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C81D38A-7C5B-4885-BB19-61A9D622A9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C81D38A-7C5B-4885-BB19-61A9D622A9A5}.IMS|Any CPU.ActiveCfg = IMS|Any CPU
+		{5C81D38A-7C5B-4885-BB19-61A9D622A9A5}.IMS|Any CPU.Build.0 = IMS|Any CPU
+		{5C81D38A-7C5B-4885-BB19-61A9D622A9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C81D38A-7C5B-4885-BB19-61A9D622A9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7F29CC8-50F0-4874-86F8-2D979E2EF80B}
+	EndGlobalSection
+EndGlobal
