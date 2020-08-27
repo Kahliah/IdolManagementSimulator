@@ -108,9 +108,12 @@
             // nextButton1
             // 
             this.nextButton1.AutoSize = true;
+            this.nextButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Honeydew;
+            this.nextButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextButton1.Location = new System.Drawing.Point(3, 3);
             this.nextButton1.Name = "nextButton1";
-            this.nextButton1.Size = new System.Drawing.Size(75, 23);
+            this.nextButton1.Size = new System.Drawing.Size(75, 29);
             this.nextButton1.TabIndex = 0;
             this.nextButton1.Text = "Finish";
             this.nextButton1.UseVisualStyleBackColor = true;
@@ -118,9 +121,12 @@
             // 
             // button1
             // 
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Honeydew;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(84, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 29);
             this.button1.TabIndex = 4;
             this.button1.Text = "Menu";
             this.button1.UseVisualStyleBackColor = true;
@@ -129,9 +135,12 @@
             // exitButton
             // 
             this.exitButton.AutoSize = true;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Honeydew;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.Location = new System.Drawing.Point(165, 3);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.Size = new System.Drawing.Size(75, 29);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;

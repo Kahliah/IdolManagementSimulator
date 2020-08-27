@@ -97,7 +97,7 @@
             // 
             // flowLayoutPanel5
             // 
-            this.flowLayoutPanel5.BackColor = System.Drawing.Color.AliceBlue;
+            this.flowLayoutPanel5.BackColor = System.Drawing.Color.LavenderBlush;
             this.flowLayoutPanel5.Controls.Add(this.label3);
             this.flowLayoutPanel5.Controls.Add(this.label4);
             this.flowLayoutPanel5.Controls.Add(this.label11);
@@ -154,7 +154,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.LavenderBlush;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
@@ -175,7 +175,7 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.LavenderBlush;
             this.flowLayoutPanel1.Controls.Add(this.nextButton1);
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.exitButton);
@@ -189,9 +189,12 @@
             // nextButton1
             // 
             this.nextButton1.AutoSize = true;
+            this.nextButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.AliceBlue;
+            this.nextButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextButton1.Location = new System.Drawing.Point(3, 3);
             this.nextButton1.Name = "nextButton1";
-            this.nextButton1.Size = new System.Drawing.Size(75, 23);
+            this.nextButton1.Size = new System.Drawing.Size(75, 27);
             this.nextButton1.TabIndex = 0;
             this.nextButton1.Text = "Finish";
             this.nextButton1.UseVisualStyleBackColor = true;
@@ -199,9 +202,12 @@
             // 
             // button1
             // 
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.AliceBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(84, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 29);
             this.button1.TabIndex = 4;
             this.button1.Text = "Menu";
             this.button1.UseVisualStyleBackColor = true;
@@ -210,9 +216,12 @@
             // exitButton
             // 
             this.exitButton.AutoSize = true;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.AliceBlue;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.Location = new System.Drawing.Point(165, 3);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.Size = new System.Drawing.Size(75, 27);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -220,7 +229,7 @@
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.BackColor = System.Drawing.Color.AliceBlue;
+            this.flowLayoutPanel3.BackColor = System.Drawing.Color.LavenderBlush;
             this.flowLayoutPanel3.Controls.Add(this.label5);
             this.flowLayoutPanel3.Controls.Add(this.conceptBox);
             this.flowLayoutPanel3.Controls.Add(this.label6);
@@ -393,7 +402,7 @@
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.BackColor = System.Drawing.Color.AliceBlue;
+            this.flowLayoutPanel4.BackColor = System.Drawing.Color.LavenderBlush;
             this.flowLayoutPanel4.Controls.Add(this.pictureBox1);
             this.flowLayoutPanel4.Controls.Add(this.pictureBox2);
             this.flowLayoutPanel4.Controls.Add(this.pictureBox3);
@@ -542,7 +551,7 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.LavenderBlush;
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.label2);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;

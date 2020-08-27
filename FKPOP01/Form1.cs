@@ -18,6 +18,7 @@ namespace FKPOP01
         public mainForm()
         {
             InitializeComponent();
+            groupSize.Controls[0].Visible = false;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -101,5 +102,6 @@ namespace FKPOP01
         {
             toolTip1.Show("Load game from save file", loadButton);
         }
+
     }
 }
