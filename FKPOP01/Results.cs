@@ -19,7 +19,9 @@ namespace FKPOP01
         public Groups Group { get; private set; }
         TrainingForm f4 = new TrainingForm();
 
-        public String[] Cfs = new string[8] { "Lipstick", "Video Game", "Contact Lenses", "Sports Drink", "Fried Chicken", "Car", "Phone", "Soju" };
+        public String[] Cfs = new string[8] { "Lipstick", "Video Game", "Contact Lenses",
+                                              "Sports Drink", "Fried Chicken", "Car",
+                                              "Phone", "Soju" };
         public double GroupCFchance = 0;
 
         public ResultsForm()
@@ -72,9 +74,11 @@ namespace FKPOP01
 
 
         public void formRefresh()
-        {            
-            PictureBox[] boxes = { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8,
-                pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14};
+        {
+            PictureBox[] boxes = { pictureBox1, pictureBox2, pictureBox3, pictureBox4,
+                                   pictureBox5, pictureBox6, pictureBox7, pictureBox8,
+                                   pictureBox9, pictureBox10, pictureBox11, pictureBox12,
+                                   pictureBox13, pictureBox14};
             for (int i = 0; i < 14; i++)
             {
                 boxes[i].Image = null;
@@ -91,7 +95,7 @@ namespace FKPOP01
 
             newNumber = rnd.Next(0, CallingForm.Group.Size);
             if (CallingForm.Group.playVideo)
-                playComebackVideo(CallingForm.Group.AllIdols[newNumber].GroupId, CallingForm.Group.AllIdols[newNumber].IdolName);
+                playComebackVideo(CallingForm.Group.AllIdols[newNumber].IdolGroup, CallingForm.Group.AllIdols[newNumber].IdolName);
 
             string Fatigues = "";
             for (int i = 0; i < CallingForm.Group.Size; i++)
@@ -114,8 +118,11 @@ namespace FKPOP01
                 //Set up picture boxes
                 string dest = "";
                 string dest2 = "";
-                dest = Path.Combine(Program.resourcesPath, CallingForm.Group.AllIdols[i].IdolName + CallingForm.Group.AllIdols[i].GroupId + ".jpg");
-                dest2 = Path.Combine(Program.resourcesPath, CallingForm.Group.AllIdols[i].IdolName + CallingForm.Group.AllIdols[i].GroupId + ".jpeg");
+                string imageName = CallingForm.Group.AllIdols[i].IdolName.Replace(" ", "_") + "!" 
+                                    + CallingForm.Group.AllIdols[i].IdolGroup.Replace(" ", "_");
+
+                dest = Path.Combine(Program.resourcesPath, imageName + ".jpg");
+                dest2 = Path.Combine(Program.resourcesPath, imageName + ".jpeg");
                 if (File.Exists(dest))
                 {
                     boxes[i].Load(dest);
@@ -259,7 +266,8 @@ namespace FKPOP01
                     specialEvents += CallingForm.Group.AllIdols[newNumber].IdolName + " have left the group.\n";
                     CallingForm.Group.IdolLeaves(newNumber);
                 }                
-                else if((CallingForm.Group.Size == 1 && !CallingForm.Group.hardMode) || (CallingForm.Group.Size == 2 && CallingForm.Group.hardMode))
+                else if((CallingForm.Group.Size == 1 && !CallingForm.Group.hardMode) || 
+                       (CallingForm.Group.Size == 2 && CallingForm.Group.hardMode))
                 {
                     gameOverForm f5 = new gameOverForm();
                     f5.CallingForm = this;
@@ -285,7 +293,8 @@ namespace FKPOP01
                     specialEvents += CallingForm.Group.AllIdols[newNumber].IdolName + " have left the group.\n";
                     CallingForm.Group.IdolLeaves(newNumber);
                 }
-                else if ((CallingForm.Group.Size == 1 && !CallingForm.Group.hardMode) || (CallingForm.Group.Size == 2 && CallingForm.Group.hardMode))
+                else if ((CallingForm.Group.Size == 1 && !CallingForm.Group.hardMode) || 
+                        (CallingForm.Group.Size == 2 && CallingForm.Group.hardMode))
                 {
                     gameOverForm f5 = new gameOverForm();
                     f5.CallingForm = this;
@@ -296,7 +305,8 @@ namespace FKPOP01
             }
 
             //Chance winning music program
-            if(CallingForm.Group.HardcoreFans + CallingForm.Group.CasualFans > 15000 && CallingForm.Group.HardcoreFans + CallingForm.Group.CasualFans < 40000)
+            if(CallingForm.Group.HardcoreFans + CallingForm.Group.CasualFans > 15000 && 
+               CallingForm.Group.HardcoreFans + CallingForm.Group.CasualFans < 40000)
             {
                 if (Convert.ToDouble(rnd.Next(101)) / 100 < 0.30)
                 {
@@ -305,7 +315,8 @@ namespace FKPOP01
                     specialEvents += "Your Group has won at a music program thanks to the fans!\n";
                 }
             }
-            else if (CallingForm.Group.HardcoreFans + CallingForm.Group.CasualFans > 40000 && CallingForm.Group.HardcoreFans + CallingForm.Group.CasualFans < 70000)
+            else if (CallingForm.Group.HardcoreFans + CallingForm.Group.CasualFans > 40000 && 
+                     CallingForm.Group.HardcoreFans + CallingForm.Group.CasualFans < 70000)
             {
                 if (Convert.ToDouble(rnd.Next(101)) / 100 < 0.75)
                 {
@@ -336,7 +347,8 @@ namespace FKPOP01
             //CF Chance
             for(int i = 0; i < CallingForm.Group.Size; i++)
             {
-                if(CallingForm.Group.AllIdols[i].Charisma > 15 && CallingForm.Group.AllIdols[i].Visual > 5 || CallingForm.Group.AllIdols[i].Visual > 20)
+                if(CallingForm.Group.AllIdols[i].Charisma > 15 && CallingForm.Group.AllIdols[i].Visual > 5 || 
+                   CallingForm.Group.AllIdols[i].Visual > 20)
                 {
                     if(Convert.ToDouble(rnd.Next(101))/100 >= 0.75)
                     {
@@ -345,7 +357,8 @@ namespace FKPOP01
                         specialEvents += CallingForm.Group.AllIdols[i].IdolName + " Has Landed A " + Cfs[rnd.Next(0, 8)] + " CF!\n";
                     }
                 }
-                else if(CallingForm.Group.AllIdols[i].Charisma > 25 && CallingForm.Group.AllIdols[i].Visual > 5 || CallingForm.Group.AllIdols[i].Visual > 30)
+                else if(CallingForm.Group.AllIdols[i].Charisma > 25 && CallingForm.Group.AllIdols[i].Visual > 5 || 
+                        CallingForm.Group.AllIdols[i].Visual > 30)
                 {
                     if (Convert.ToDouble(rnd.Next(101)) / 100 >= 0.50)
                     {
@@ -354,7 +367,8 @@ namespace FKPOP01
                         specialEvents += CallingForm.Group.AllIdols[i].IdolName + " Has Landed A " + Cfs[rnd.Next(0, 8)] + " CF!\n";
                     }
                 }
-                else if (CallingForm.Group.AllIdols[i].Charisma > 30 && CallingForm.Group.AllIdols[i].Visual > 10 || CallingForm.Group.AllIdols[i].Visual > 45)
+                else if (CallingForm.Group.AllIdols[i].Charisma > 30 && CallingForm.Group.AllIdols[i].Visual > 10 || 
+                         CallingForm.Group.AllIdols[i].Visual > 45)
                 {
                     if (Convert.ToDouble(rnd.Next(101)) / 100 >= 0.25)
                     {
@@ -446,35 +460,10 @@ namespace FKPOP01
         }
 
         //bring up browser to play video if enabled by user
-        public void playComebackVideo(int memberId, string memberName)
+        public void playComebackVideo(string groupName, string memberName)
         {
-            string groupName = "";
             string url = "";
             string htmlCode = "";
-
-            using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(Program.connectionString))
-            {
-                try
-                {
-                    string query = "SELECT GroupName FROM Groups WHERE Id = '" + memberId + "'";
-                    System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(query, connection);
-
-                    System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter(query, connection);
-                    connection.Open();
-
-                    DataSet ds = new DataSet();
-                    da.Fill(ds, "Groups");
-
-                    connection.Close();
-
-                    groupName = ds.Tables["Groups"].Rows[0]["GroupName"].ToString().Trim(' ');
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-            }
             
             url = "https://youtube.com/results?search_query=" + groupName + "+" + memberName + "+fancam";
 

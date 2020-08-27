@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.Data.SqlClient;
 
 namespace FKPOP01
 {
@@ -38,7 +37,6 @@ namespace FKPOP01
                 MessageBox.Show("Group Name cannot be blank");
                 return;
             }
-
             this.Group = new Groups(groupName.Text, conceptBox.Text, loanAmt.Value, groupSize.Value, hardBox.Checked, dateTimePicker1.Value.Date, checkBox1.Checked);
             this.Group.currentDate = dateTimePicker1.Value.Date;
             Group.GroupInfo();
@@ -69,8 +67,6 @@ namespace FKPOP01
             {
                 Groups group = Program.ReadFromBinaryFile<Groups>(openFileDialog1.FileName);
                 this.Group = group;
-                //this.Group.AllIdols = group.AllIdols;
-                //this.Group.ComebackInfos = group.ComebackInfos;
 
                 this.Hide();
 

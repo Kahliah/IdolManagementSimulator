@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -19,7 +18,6 @@ namespace FKPOP01
         TextBox[] weights = new TextBox[14];
         TextBox[] heights = new TextBox[14];
         TextBox[] ages = new TextBox[14];
-        Int32 groupId = 0;
 
         public newForm()
         {
@@ -41,34 +39,6 @@ namespace FKPOP01
                 return;
             }
 
-            using (SqlConnection connection = new SqlConnection(Program.connectionString))
-            {
-                try
-                {
-                    string query = "INSERT INTO Groups ([GroupName], [MemberCount]) values(@GroupName, @MemberCount)";
-                    SqlCommand cmd = new SqlCommand(query, connection);
-
-                    cmd.Parameters.Add("@GroupName", SqlDbType.NChar).Value = textBox1.Text;
-                    cmd.Parameters.Add("@MemberCount", SqlDbType.Int).Value = Convert.ToInt32(numericUpDown1.Value);
-                    connection.Open();
-                    int q = cmd.ExecuteNonQuery();
-
-                    query = "Select Id From Groups Where GroupName = '" + textBox1.Text + "'";
-
-                    cmd = new SqlCommand(query, connection);
-                    
-                    groupId = (Int32)cmd.ExecuteScalar();
-
-                    if (q > 0)
-                        MessageBox.Show("Group Created, now add members info");
-
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-            }
             flowLayoutPanel1.Hide();
             flowLayoutPanel2.Controls.Remove(button1);
             flowLayoutPanel2.Show();
@@ -115,11 +85,6 @@ namespace FKPOP01
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             int members = Convert.ToInt32(numericUpDown1.Value);
@@ -131,45 +96,6 @@ namespace FKPOP01
                 {
                     MessageBox.Show("Fields cannot be blank");
                     return;
-                }
-            }
-
-            using (SqlConnection connection = new SqlConnection(Program.connectionString))
-            {
-                try
-                {
-                    string[] querys = new string[members];
-                    SqlCommand[] cmd = new SqlCommand[members];
-                    int i = 0;
-
-                    connection.Open();
-
-                    for (int j = 0; j < members; j++)
-                    {                        
-                        querys[j] = "INSERT INTO Idols ([IdolName], [IdolGroup], [Weight], [Height], [Age]) values(@IdolName, @IdolGroup, @Weight, @Height, @Age)";
-                        cmd[j] = new SqlCommand(querys[j], connection);
-
-                        cmd[j].Parameters.Add("@IdolName", SqlDbType.NChar).Value = names[j].Text;
-                        cmd[j].Parameters.Add("@IdolGroup", SqlDbType.Int).Value = groupId;
-                        cmd[j].Parameters.Add("@Weight", SqlDbType.Int).Value = Convert.ToInt32(weights[j].Text);
-                        cmd[j].Parameters.Add("@Height", SqlDbType.Int).Value = Convert.ToInt32(heights[j].Text);
-                        cmd[j].Parameters.Add("@Age", SqlDbType.Int).Value = Convert.ToInt32(ages[j].Text);
-
-                        i = cmd[j].ExecuteNonQuery();
-                    }
-
-                    connection.Close();
-
-                    if (i > 0)
-                    {
-                        MessageBox.Show("Members added");
-                    }
-                    this.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message + "\n (Please no decimals in Weight/Height");
                 }
             }
         }
