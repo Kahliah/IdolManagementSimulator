@@ -61,12 +61,11 @@ namespace FKPOP01
 
             CallingForm.Group.currentDate = dateTimePicker1.Value;
             CallingForm.Group.Concept = conceptBox.Text;
-
-            this.Hide();
-
+            
             CallingForm.CallingForm.Show();
             CallingForm.CallingForm.formRefresh();
-                        
+            this.Hide();
+
         }
 
         public void formRefresh()

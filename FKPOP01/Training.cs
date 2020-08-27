@@ -109,11 +109,11 @@ namespace FKPOP01
         }
 
         private void nextButton1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+        {            
             this.Group = CallingForm.Group;
             f5.formRefresh();
             f5.Show();
+            this.Hide();
         }
 
         public void formRefresh()

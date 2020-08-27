@@ -40,10 +40,10 @@ namespace FKPOP01
             this.Group = new Groups(groupName.Text, conceptBox.Text, loanAmt.Value, groupSize.Value, hardBox.Checked, dateTimePicker1.Value.Date, checkBox1.Checked);
             this.Group.currentDate = dateTimePicker1.Value.Date;
             Group.GroupInfo();
-            this.Hide();
             idolPicksForm f2 = new idolPicksForm();
             f2.CallingForm = this;
             f2.Show();
+            this.Hide();
         }
 
         private void menuButton_Click(object sender, EventArgs e)

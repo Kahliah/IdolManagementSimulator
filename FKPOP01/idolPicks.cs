@@ -205,9 +205,9 @@ namespace FKPOP01
                                                       this.Group.Debut));
 
             Group.Comebacks += 1;
-
-            this.Hide();            
+                    
             f3.Show();
+            this.Hide();
         }
 
         public void formRefresh()
