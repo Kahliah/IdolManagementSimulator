@@ -5,21 +5,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Data.Common;
+using System.Diagnostics;
 using System.Configuration;
 using System.IO;
-using System.Data.SqlClient;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace FKPOP01
 {
     static class Program
     {
-        public static string provider = ConfigurationManager.AppSettings["provider"];
-        public static string connectionString = ConfigurationManager.AppSettings["connectionString"];
-        public static DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
-        //public static string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
         public static string projectPath = Directory.GetCurrentDirectory();
         public static string resourcesPath = Path.Combine(projectPath, "Resources");
-    
+        public static string apiPath = "https://utw3a4a6u5.execute-api.us-west-2.amazonaws.com/api_deploy_1";
+
         //Console.ReadLine();
 
         /// <summary>
@@ -35,23 +35,23 @@ namespace FKPOP01
 
         public static int GetTableCount(string tableName)
         {
-            using (SqlConnection connection = new SqlConnection(Program.connectionString))
+            int count = 0;
+            using (var client = new HttpClient())
             {
-                try
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = client.GetAsync(apiPath + "/table-count/" + tableName).Result;
+
+                if (!response.IsSuccessStatusCode)
                 {
-                    string query = String.Format("SELECT COUNT(*) from {0}", tableName);                    
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    connection.Open();
-                    int count = (int)cmd.ExecuteScalar();
-                    connection.Close();
-                    return count;
+                    MessageBox.Show("Connection Error: " + response.StatusCode);
+                    Environment.Exit(0);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                    return 0;
-                }
+
+                dynamic result = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
+                count = result.Count;
             }
+            return count;
         }
 
         public static int GetWordCount(string sentence)

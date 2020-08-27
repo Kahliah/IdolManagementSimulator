@@ -118,8 +118,10 @@ namespace FKPOP01
 
         public void formRefresh()
         {
-            PictureBox[] boxes = { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8,
-                pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14};
+            PictureBox[] boxes = { pictureBox1, pictureBox2, pictureBox3, pictureBox4,
+                                   pictureBox5, pictureBox6, pictureBox7, pictureBox8,
+                                   pictureBox9, pictureBox10, pictureBox11, pictureBox12,
+                                   pictureBox13, pictureBox14};
             for (int i = 0; i < 14; i++)
             {
                 boxes[i].Image = null;
@@ -144,8 +146,12 @@ namespace FKPOP01
                 //Set up picture boxes                
                 string dest = "";
                 string dest2 = "";
-                dest = Path.Combine(Program.resourcesPath, CallingForm.Group.AllIdols[i].IdolName + CallingForm.Group.AllIdols[i].GroupId + ".jpg");
-                dest2 = Path.Combine(Program.resourcesPath, CallingForm.Group.AllIdols[i].IdolName + CallingForm.Group.AllIdols[i].GroupId + ".jpeg");
+                string imageName = CallingForm.Group.AllIdols[i].IdolName.Replace(" ", "_") + "!"
+                                    + CallingForm.Group.AllIdols[i].IdolGroup.Replace(" ", "_");
+
+                dest = Path.Combine(Program.resourcesPath, imageName + ".jpg");
+                dest2 = Path.Combine(Program.resourcesPath, imageName + ".jpeg");
+
                 if (File.Exists(dest))
                 {
                     boxes[i].Load(dest);

@@ -11,6 +11,12 @@ namespace FKPOP01
     public class Idols
     {
         public string IdolName { get; set; }
+        public string SpecialName { get; set; }
+        public string IdolGroup { get; set; }
+        public string Gender { get; set; }
+        public string Language { get; set; }
+
+        public int Id { get; set; }
         public int GroupId;
         public int Vocal { get; set; }
         public int Dance { get; set; }
@@ -18,23 +24,23 @@ namespace FKPOP01
         public int Charisma { get; set; }
         public int Comedy { get; set; }
         public int Acting { get; set; }
-        public decimal Height { get; set; }
-        public decimal Weight { get; set; }
-        public int Age { get; set; }
         public int SpecialBonus { get; set; }
         public int Variety { get; set; }
         public int Musical { get; set; }
-        public string Language { get; set; }
-        public string SpecialName { get; set; }
         public int Rap { get; set; }
-        public int Id { get; set; }
+
+        public decimal Height { get; set; }
+        public decimal Weight { get; set; }
+        public int Age { get; set; }
+
         public bool Leader = false;
         public uint Fatigue = 0;
         public double Modifier = 0;
         public string Status = "Healthy";
-        public string GroupName;
 
-        public Idols(string name, int groupId, int vocal, int dance, int visual, int charisma, int comedy, int acting, decimal height, decimal weight, int age, int specialBonus, int variety, int musical, string language, string specialName, int rap, int id)
+        public Idols(string name, int groupId, int vocal, int dance, int visual, int charisma, int comedy, 
+                     int acting, decimal height, decimal weight, int age, int specialBonus, int variety, 
+                     int musical, string language, string specialName, int rap, int id, string gender)
         {
             IdolName = name;
             GroupId = groupId;
@@ -54,10 +60,31 @@ namespace FKPOP01
             SpecialName = specialName;
             Rap = rap;
             Id = id;
+            Gender = gender;
         }
-        public Idols()
-        {
 
+        public Idols(int id, int age, string gender, decimal height, decimal weight, string idolgroup, string idolname, string specialname)
+        {
+            Random rnd = new Random();
+            Vocal = rnd.Next(11);
+            Dance = rnd.Next(11);
+            Visual = rnd.Next(11);
+            Charisma = rnd.Next(11);
+            Comedy = rnd.Next(11);
+            Acting = rnd.Next(11);
+            SpecialBonus = rnd.Next(11);
+            Variety = rnd.Next(11);
+            Musical = rnd.Next(11);
+            Rap = rnd.Next(11);
+
+            IdolName = idolname;            
+            Height = height;
+            Weight = weight;
+            Age = age;            
+            SpecialName = specialname;            
+            Id = id;
+            Gender = gender;
+            IdolGroup = idolgroup;
         }
 
         public string PrintInfo()
@@ -66,7 +93,7 @@ namespace FKPOP01
             infoList += "Name: " + this.IdolName + "\n";
             foreach (PropertyInfo info in typeof(Idols).GetProperties())
             {
-                if(info.Name != "Id" && info.Name != "GroupId" && info.Name != "IdolName")
+                if(info.Name != "Id" && info.Name != "GroupId" && info.Name != "IdolName" && info.Name != "Gender")
                     infoList += String.Format("\n" + info.Name + ": " + info.GetValue(this));
             }
             infoList += "\n\nStatus: " + this.Status;
