@@ -235,6 +235,11 @@ namespace FKPOP01
         {
             toolTip1.Show("Enter group name between 1-16 characters", textBox1);
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     
 }

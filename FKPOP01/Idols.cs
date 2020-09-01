@@ -124,6 +124,26 @@ namespace FKPOP01
             this.Fatigue += Convert.ToUInt32(((Age/2)+(Weight/3)*rndNumber));
         }
 
+        public string PrintSingleStat(string stat)
+        {
+            string statValue = "";
+            foreach (PropertyInfo info in typeof(Idols).GetProperties())
+            {
+                if (info.Name == stat)
+                    statValue = info.GetValue(this).ToString();
+            }
+            return statValue;
+        }
+
+        public string PrintAllStats()
+        {
+            return "Vocal: " + this.Vocal + "\nDance: " + this.Dance + "\nVisual: " +
+                   this.Visual + "\nCharisma: " + this.Charisma + "\nComedy: " + 
+                   this.Comedy + "\nActing: " + this.Acting + "\nSpecialBonus: " +
+                    this.SpecialBonus + "\nVariety: " + this.Variety + "\nMusical: " + 
+                    this.Musical + "\nRap: " + this.Rap + "\n\n";
+        }
+
         public void IncreaseStat(string stat, Random rnd)
         {
             this.Fatigue += 1;

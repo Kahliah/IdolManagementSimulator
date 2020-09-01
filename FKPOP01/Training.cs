@@ -37,7 +37,19 @@ namespace FKPOP01
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintInfo();
+            PictureBox[] boxes = { pictureBox1, pictureBox2, pictureBox3, pictureBox4,
+                                   pictureBox5, pictureBox6, pictureBox7, pictureBox8,
+                                   pictureBox9, pictureBox10, pictureBox11, pictureBox12,
+                                   pictureBox13, pictureBox14};
+
+            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintAllStats();
+            label10.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].IdolName + "'s " + comboBox2.Text + 
+                    " is " + CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintSingleStat(comboBox2.Text);
+
+            if (CallingForm.Group.Size != 1)
+                pictureBox15.Load(boxes[comboBox1.SelectedIndex].ImageLocation);
+            else
+                pictureBox15.Hide();
         }
 
         //Train single idol in single stat
@@ -46,7 +58,9 @@ namespace FKPOP01
             Random rnd = new Random();
 
             CallingForm.Group.AllIdols[comboBox1.SelectedIndex].IncreaseStat(comboBox2.Text, rnd);            
-            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintInfo();
+            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintAllStats();
+            label10.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].IdolName + "'s " + comboBox2.Text +
+                    " is " + CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintSingleStat(comboBox2.Text);
 
             if (CallingForm.Group.currentDate.Year != CallingForm.Group.currentDate.AddDays(1).Year)
                 CallingForm.Group.IdolsBirthday();
@@ -87,7 +101,7 @@ namespace FKPOP01
                 return;
             }
             
-            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintInfo();
+            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintAllStats();
 
             if (CallingForm.Group.currentDate.Year != CallingForm.Group.currentDate.AddDays(1).Year)
                 CallingForm.Group.IdolsBirthday();
@@ -134,7 +148,9 @@ namespace FKPOP01
             comboBox1.ValueMember = "Id";
             comboBox2.SelectedIndex = 0;
 
-            label8.Text = CallingForm.Group.AllIdols[0].PrintInfo();
+            label8.Text = CallingForm.Group.AllIdols[0].PrintAllStats();
+            label10.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].IdolName + "'s " + comboBox2.Text +
+                    " is " + CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintSingleStat(comboBox2.Text);
 
             label1.Text = CallingForm.Group.Name;
             string Fatigues = "";
@@ -177,6 +193,15 @@ namespace FKPOP01
                 }
                 
             }
+            if (CallingForm.Group.Size != 1)
+                pictureBox15.Load(boxes[comboBox1.SelectedIndex].ImageLocation);
+            else
+            {
+                pictureBox15.Hide();
+                button5.Hide();
+                restAllButton.Hide();
+            }
+
             label3.Text = Fatigues;
 
             if (CallingForm.Group.currentDate.Year != CallingForm.Group.currentDate.AddDays(1).Year)
@@ -220,7 +245,9 @@ namespace FKPOP01
             
             label4.Text = "Current Date: " + CallingForm.Group.currentDate.Date.ToShortDateString();
 
-            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintInfo();
+            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintAllStats();
+            label10.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].IdolName + "'s " + comboBox2.Text +
+                    " is " + CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintSingleStat(comboBox2.Text);
 
             String Fatigues = "";
 
@@ -243,7 +270,9 @@ namespace FKPOP01
             {
                 CallingForm.Group.AllIdols[i].IncreaseStat(comboBox2.Text, rnd);
             }
-            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintInfo();
+            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintAllStats();
+            label10.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].IdolName + "'s " + comboBox2.Text +
+                    " is " + CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintSingleStat(comboBox2.Text);
 
             if (CallingForm.Group.currentDate.Year != CallingForm.Group.currentDate.AddDays(1).Year)
                 CallingForm.Group.IdolsBirthday();
@@ -262,6 +291,13 @@ namespace FKPOP01
 
             CallingForm.Group.Loan -= 75*CallingForm.Group.Size;
             label9.Text = "Money: $" + CallingForm.Group.Loan.ToString();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label8.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintAllStats();
+            label10.Text = CallingForm.Group.AllIdols[comboBox1.SelectedIndex].IdolName + "'s " + comboBox2.Text +
+                    " is " + CallingForm.Group.AllIdols[comboBox1.SelectedIndex].PrintSingleStat(comboBox2.Text);
         }
     }
 }
