@@ -59,11 +59,11 @@ namespace FKPOP01
         }
 
         private void nextButton1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+        {            
             //this.Group = CallingForm.Group;
             f4.formRefresh();     
             f4.Show();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -446,9 +446,11 @@ namespace FKPOP01
 
             Form f1 = new Form();
             f1.Size = new Size(250, 500);
+            f1.BackColor = this.BackColor;
             FlowLayoutPanel p1 = new FlowLayoutPanel();
             Label l1 = new Label();
             l1.Text = allComebacks;
+            l1.Font = new Font(l1.Font.Name, 10, l1.Font.Style, l1.Font.Unit);
             l1.AutoSize = true;
             p1.Controls.Add(l1);
             p1.AutoScroll = true;

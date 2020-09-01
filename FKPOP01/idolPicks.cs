@@ -205,9 +205,9 @@ namespace FKPOP01
                                                       this.Group.Debut));
 
             Group.Comebacks += 1;
-
-            this.Hide();            
+                    
             f3.Show();
+            this.Hide();
         }
 
         public void formRefresh()
@@ -234,6 +234,11 @@ namespace FKPOP01
         private void textBox1_MouseHover(object sender, EventArgs e)
         {
             toolTip1.Show("Enter group name between 1-16 characters", textBox1);
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
     
